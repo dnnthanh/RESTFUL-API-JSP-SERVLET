@@ -16,21 +16,33 @@
                 </div>
             </c:if>
 
-            <form id="formLogin" method="post" action="${pageContext.request.contextPath}/login">
+            <form action="${pageContext.request.contextPath}/login?is_from_login=true" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="username"
-                           name="username" placeholder="Tên đăng nhập">
+                    <input type="text" class="form-control" id="username" name="username"
+                           placeholder="Tên đăng nhập">
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control" id="password"
-                           name="password" placeholder="Mật khẩu">
+                    <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Mật khẩu">
                 </div>
-                <input type="hidden" name="is_from_login" value="true">
-                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>  
+    $('.btn-login').click(function(){
+        let username = $("#username").val();
+        let password = $("#password").val();
+        API.post(`\api/auth/login?username=\${username}&password=\${password}`)
+        .then(function(response){
+            console.log(response);
+        }).catch(function (error){
+            console.log(error);
+        })
+    });
+</script>
 </body>
 </html>

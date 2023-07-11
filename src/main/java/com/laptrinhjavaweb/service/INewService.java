@@ -9,7 +9,7 @@ import com.laptrinhjavaweb.pagingandsorting.PagingAndSorting;
 
 public interface INewService {
 
-	List<NewModel> findAllByCategoryId (Long categoryId);
+	//List<NewModel> findAllByCategoryId (Long categoryId);
 	
 	NewModel save(NewModel newModel);
 	
@@ -18,4 +18,6 @@ public interface INewService {
 	void delete(Long[] ids);
 	
 	Map<String, Object> findAll(PagingAndSorting ps);
+
+	Map<String, Object> findById(Long id);
 }

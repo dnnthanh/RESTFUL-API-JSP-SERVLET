@@ -69,7 +69,6 @@ public class AuthController extends HttpServlet {
 				} else if(roleModel.getCode().equals("ADMIN")) {
 					response.sendRedirect(request.getContextPath() + "/admin/dashboards");
 				}
-
 			}
 		}
 	}

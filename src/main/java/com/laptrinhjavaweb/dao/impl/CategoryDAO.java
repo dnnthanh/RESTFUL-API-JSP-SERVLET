@@ -13,4 +13,10 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 		String query = "SELECT * FROM web_jsp_servlet.categories";
 		return findAll(query, new CategoryMapper());
 	}
+
+	@Override
+	public CategoryModel findById(Long id) {
+		String query = "SELECT * FROM web_jsp_servlet.categories WHERE id = ?";
+		return findByFileds(query, new CategoryMapper(), id);
+	}
 }

@@ -28,8 +28,7 @@ public class NewDAO extends AbstractDAO<NewModel> implements INewDAO {
 	@Override
 	public NewModel findById(Long id) {
 		String query = "SELECT * FROM web_jsp_servlet.news WHERE id = ?";
-		List<NewModel> list = findAll(query, new NewMapper(), id);
-		return list.isEmpty() ? null : list.get(0);
+		return findByFileds(query, new NewMapper(), id);
 	}
 
 	@Override
