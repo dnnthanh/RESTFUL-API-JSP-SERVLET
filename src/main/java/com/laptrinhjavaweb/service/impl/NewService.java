@@ -11,7 +11,7 @@ import com.laptrinhjavaweb.dao.INewDAO;
 import com.laptrinhjavaweb.model.NewModel;
 import com.laptrinhjavaweb.service.INewService;
 
-import pagingandsorting.PagingAndSorting;
+import com.laptrinhjavaweb.pagingandsorting.PagingAndSorting;
 
 public class NewService implements INewService {
 

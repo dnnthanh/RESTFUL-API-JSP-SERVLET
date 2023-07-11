@@ -13,4 +13,6 @@ public interface GenericDAO<T> {
 	Long insert(String query, Object... parameters);
 	
 	int totalCount(String query);
+	
+	T findByFileds (String query, RowMapper<T> rowMapper, Object... parameters);
 }

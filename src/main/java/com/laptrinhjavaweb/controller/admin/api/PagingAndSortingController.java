@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.laptrinhjavaweb.service.INewService;
 
-import pagingandsorting.PagingAndSorting;
-import util.FormUtil;
+import com.laptrinhjavaweb.pagingandsorting.PagingAndSorting;
+import com.laptrinhjavaweb.util.FormUtil;
 
 @WebServlet(urlPatterns = { "/api/articels" })
 public class PagingAndSortingController extends HttpServlet {

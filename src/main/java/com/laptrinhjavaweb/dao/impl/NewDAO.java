@@ -7,7 +7,7 @@ import com.laptrinhjavaweb.dao.INewDAO;
 import com.laptrinhjavaweb.mapper.NewMapper;
 import com.laptrinhjavaweb.model.NewModel;
 
-import pagingandsorting.PagingAndSorting;
+import com.laptrinhjavaweb.pagingandsorting.PagingAndSorting;
 
 public class NewDAO extends AbstractDAO<NewModel> implements INewDAO {
 	@Override

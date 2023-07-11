@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.laptrinhjavaweb.model.NewModel;
 
-import pagingandsorting.PagingAndSorting;
+import com.laptrinhjavaweb.pagingandsorting.PagingAndSorting;
 
 public interface INewService {
 

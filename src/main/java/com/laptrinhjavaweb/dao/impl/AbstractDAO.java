@@ -8,18 +8,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import com.laptrinhjavaweb.dao.GenericDAO;
 import com.laptrinhjavaweb.mapper.RowMapper;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
 
+	ResourceBundle bundle = ResourceBundle.getBundle("db");
+
 	public Connection getConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/web_jsp_servlet";
-			String username = "root";
-			String password = "thanh1908Mysql@2003";
+//			Class.forName("com.mysql.jdbc.Driver");
+//			String url = "jdbc:mysql://localhost:3306/web_jsp_servlet";
+//			String username = "root";
+//			String password = "thanh1908Mysql@2003";
+
+			Class.forName(bundle.getString("driver"));
+			String url = bundle.getString("url");
+			String username = bundle.getString("username");
+			String password = bundle.getString("password");
 			return DriverManager.getConnection(url, username, password);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -195,6 +203,43 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return 0;
+			}
+		}
+	}
+
+	@Override
+	public T findByFileds(String query, RowMapper<T> rowMapper, Object... parameters) {
+		T model = null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement(query);
+			setParameters(statement, parameters);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				model = rowMapper.mapRow(resultSet);
+			}
+			return model;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
 			}
 		}
 	}

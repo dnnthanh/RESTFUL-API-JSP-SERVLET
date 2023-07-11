@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.laptrinhjavaweb.model.NewModel;
 
-import pagingandsorting.PagingAndSorting;
+import com.laptrinhjavaweb.pagingandsorting.PagingAndSorting;
 
 public interface INewDAO{
 	

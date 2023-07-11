@@ -21,14 +21,14 @@
 				</ul>
 			</div>
 			<div class="page-content">
-				<div class="row lead">
+				<!-- <div class="row lead">
 					<div class="col-xs-12">
 						<select style="width: 10%" class="form-control sort-by" id="sel1">
 							<option value="DESC">Title - DESC</option>
 							<option value="ASC">Title - ASC</option>
 						</select>
 					</div>
-				</div>
+				</div> -->
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="table-responsive">
@@ -92,7 +92,7 @@
 
 
 				function loadRowNew(item) {
-					return `<tr>
+					return `\<tr>
 							<td>\${item.title}</td>
 							<td>\${item.descriptionshort}</td>
 							<td>

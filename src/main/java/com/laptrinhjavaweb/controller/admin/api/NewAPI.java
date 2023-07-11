@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.laptrinhjavaweb.model.NewModel;
 import com.laptrinhjavaweb.service.INewService;
 
-import util.HttpUtil;
+import com.laptrinhjavaweb.util.HttpUtil;
 
 @WebServlet(urlPatterns = { "/api/admin/news" })
 public class NewAPI extends HttpServlet {
