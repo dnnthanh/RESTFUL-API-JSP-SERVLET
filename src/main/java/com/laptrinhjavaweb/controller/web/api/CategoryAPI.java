@@ -17,20 +17,20 @@ import com.laptrinhjavaweb.service.ICategoryService;
 @WebServlet("/api-categories")
 public class CategoryAPI extends HttpServlet {
 
-	private static final long serialVersionUID = -7244918157688938373L;
+    private static final long serialVersionUID = -7244918157688938373L;
 
-	@Inject
-	private ICategoryService categoryService;
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		ObjectMapper mapper = new ObjectMapper();
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		List<CategoryModel> listCategory = this.categoryService.findAll();
-		mapper.writeValue(response.getOutputStream(), listCategory);
-	}
+    @Inject
+    private ICategoryService categoryService;
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        List<CategoryModel> listCategory = this.categoryService.findAll();
+        mapper.writeValue(response.getOutputStream(), listCategory);
+    }
 
 }

@@ -1,12 +1,9 @@
 package com.laptrinhjavaweb.auth.api;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.laptrinhjavaweb.model.RoleModel;
-import com.laptrinhjavaweb.model.UserModel;
-import com.laptrinhjavaweb.service.IUserService;
-import com.laptrinhjavaweb.util.FormUtil;
-import com.laptrinhjavaweb.util.SessionUtil;
-import org.json.JSONObject;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -14,15 +11,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.laptrinhjavaweb.model.UserModel;
+import com.laptrinhjavaweb.service.IUserService;
+import com.laptrinhjavaweb.util.FormUtil;
 
 @WebServlet("/api/auth/login")
 public class AuthAPI extends HttpServlet {
 
-    @Inject
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Inject
     private IUserService userService;
 
     @Override
@@ -34,10 +36,9 @@ public class AuthAPI extends HttpServlet {
         Map<String, Object> mapData = this.userService.findByUsernameAndPasswordAndStatus(model.getUsername(),
                 model.getPassword(), 1);
         Map<String, Object> mapResult = new HashMap<>();
-        JSONObject jsonObject = new JSONObject();
-        if(mapData == null){
+        if (mapData == null) {
             mapResult.put("error", "Unauthorized access");
-        }else {
+        } else {
             String token = this.genarateToken();
             mapResult.put("access_token", token);
             mapResult.put("token_type", "bearer");
@@ -45,7 +46,7 @@ public class AuthAPI extends HttpServlet {
         mapper.writeValue(response.getOutputStream(), mapResult);
     }
 
-    private String genarateToken(){
+    private String genarateToken() {
         String token = UUID.randomUUID().toString();
         return token;
     }

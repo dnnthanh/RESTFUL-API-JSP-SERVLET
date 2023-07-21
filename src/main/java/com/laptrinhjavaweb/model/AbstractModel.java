@@ -5,66 +5,76 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbstractModel<T> {
-	private Long id;
-	private Timestamp createdDate;
-	private Timestamp modifiedDate;
-	private String createdBy;
-	private String modifiedBy;
-	private Long ids[];
-	private List<T> listModel = new ArrayList<>();
+    private Long id;
+    private Timestamp createdDate;
+    private Timestamp modifiedDate;
+    private String createdBy;
+    private String modifiedBy;
+    private Long ids[];
+    private List<T> listModel = new ArrayList<>();
+    private String type;
 
-	public Long getId() {
-		return id;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public Timestamp getCreatedDate() {
-		return createdDate;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Timestamp getModifiedDate() {
-		return modifiedDate;
-	}
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
 
-	public void setModifiedDate(Timestamp modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
+    }
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
+    public Timestamp getModifiedDate() {
+        return modifiedDate;
+    }
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
+    public void setModifiedDate(Timestamp modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
 
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-	
-	public Long[] getIds() {
-		return ids;
-	}
-	public void setIds(Long ids[]) {
-		this.ids = ids;
-	}
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
-	public List<T> getListModel() {
-		return listModel;
-	}
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
 
-	public void setListModel(List<T> listModel) {
-		this.listModel = listModel;
-	}
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Long[] getIds() {
+        return ids;
+    }
+
+    public void setIds(Long ids[]) {
+        this.ids = ids;
+    }
+
+    public List<T> getListModel() {
+        return listModel;
+    }
+
+    public void setListModel(List<T> listModel) {
+        this.listModel = listModel;
+    }
 }

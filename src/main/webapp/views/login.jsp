@@ -24,7 +24,7 @@
 
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Mật khẩu">
+                           placeholder="Mật khẩu">
                 </div>
                 <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
             </form>
@@ -32,14 +32,14 @@
     </div>
 </div>
 
-<script>  
-    $('.btn-login').click(function(){
+<script>
+    $('.btn-login').click(function () {
         let username = $("#username").val();
         let password = $("#password").val();
         API.post(`\api/auth/login?username=\${username}&password=\${password}`)
-        .then(function(response){
-            console.log(response);
-        }).catch(function (error){
+            .then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
             console.log(error);
         })
     });

@@ -16,13 +16,16 @@ public class NewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = request.getRequestURI();
-        if(url.contains("create")){
-            this.create(request, response);
-        }else if(url.contains("edit")){
-            this.edit(request, response);
-        }else{
+        String type = request.getParameter("type");
+        String id = request.getParameter("id");
+        if (type.equals("list")) {
             this.list(request, response);
+        } else if (type.equals("edit")) {
+            if (id == null) {
+                this.create(request, response);
+            } else {
+                this.edit(request, response);
+            }
         }
     }
 
@@ -32,10 +35,10 @@ public class NewController extends HttpServlet {
 
     }
 
-    // From CREATE.JSP. Then call API /api/articles
     private void create(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-
+            throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher("/views/admin/new/create.jsp");
+        rd.forward(request, response);
     }
 
     private void edit(HttpServletRequest request, HttpServletResponse response)

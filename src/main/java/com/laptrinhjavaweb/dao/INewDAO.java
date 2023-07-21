@@ -6,19 +6,19 @@ import com.laptrinhjavaweb.model.NewModel;
 
 import com.laptrinhjavaweb.pagingandsorting.PagingAndSorting;
 
-public interface INewDAO{
-	
-	List<NewModel> findAllByCategoryId(Long categoryId);
-	
-	Long save(NewModel newModel);
-	
-	NewModel findById(Long id);
-	
-	void update(NewModel updateNew);
-	
-	void delete(Long id);
-	
-	int totalCount();
-	
-	List<NewModel> findAll(PagingAndSorting ps);
+public interface INewDAO {
+
+    List<NewModel> findAllByCategoryId(Long categoryId);
+
+    Long save(NewModel newModel);
+
+    NewModel findById(Long id);
+
+    void update(NewModel updateNew);
+
+    void delete(Long id);
+
+    int totalCount();
+
+    List<NewModel> findAll(PagingAndSorting ps);
 }

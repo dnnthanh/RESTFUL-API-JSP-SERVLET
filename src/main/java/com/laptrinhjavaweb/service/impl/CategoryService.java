@@ -8,18 +8,18 @@ import com.laptrinhjavaweb.dao.ICategoryDAO;
 import com.laptrinhjavaweb.model.CategoryModel;
 import com.laptrinhjavaweb.service.ICategoryService;
 
-public class CategoryService implements ICategoryService{
-	@Inject
-	private ICategoryDAO categoryDao;
-	
-	@Override
-	public List<CategoryModel> findAll() {
-		return this.categoryDao.findAll();
-	}
+public class CategoryService implements ICategoryService {
+    @Inject
+    private ICategoryDAO categoryDao;
 
-	@Override
-	public CategoryModel findById(Long id) {
-		return this.categoryDao.findById(id);
-	}
+    @Override
+    public List<CategoryModel> findAll() {
+        return this.categoryDao.findAll();
+    }
+
+    @Override
+    public CategoryModel findById(Long id) {
+        return this.categoryDao.findById(id);
+    }
 
 }

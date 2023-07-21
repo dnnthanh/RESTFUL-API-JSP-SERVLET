@@ -17,8 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
-@WebServlet(urlPatterns = {"/api/admin/articles/*"})
+@WebServlet(urlPatterns = {"/api/admin/articles"})
 public class NewAPI extends HttpServlet {
 
     private static final long serialVersionUID = -915988021506484384L;
@@ -34,13 +35,12 @@ public class NewAPI extends HttpServlet {
         response.setContentType("application/json");
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> mapData = new HashMap<>();
-        if(ps == null){
-            Long id = Long.parseLong(request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")));
+        if (ps.checkNull()) {
+            Long id = Long.parseLong(request.getParameter("id"));
             mapData = this.newService.findById(id);
-        }else{
+        } else {
             mapData = this.newService.findAll(ps);
         }
-
         mapper.writeValue(response.getOutputStream(), mapData);
     }
 

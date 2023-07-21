@@ -1,55 +1,62 @@
 package com.laptrinhjavaweb.pagingandsorting;
 
 public class PagingAndSorting {
-	
-	private Integer page;
 
-	private Integer limit;
+    private Integer page;
 
-	private String sortBy;
+    private Integer limit;
 
-	private String sortName;
+    private String sortBy;
 
-	public PagingAndSorting() {
-		
-	}
-	
-	public PagingAndSorting(Integer page, Integer limit, String sortBy, String sortName) {
-		this.page = page;
-		this.limit = limit;
-		this.sortBy = sortBy;
-		this.sortName = sortName;
-	}
+    private String sortName;
 
-	public Integer getPage() {
-		return page;
-	}
+    public PagingAndSorting() {
 
-	public void setPage(Integer page) {
-		this.page = page;
-	}
+    }
 
-	public Integer getLimit() {
-		return limit;
-	}
+    public PagingAndSorting(Integer page, Integer limit, String sortBy, String sortName) {
+        this.page = page;
+        this.limit = limit;
+        this.sortBy = sortBy;
+        this.sortName = sortName;
+    }
 
-	public void setLimit(Integer limit) {
-		this.limit = limit;
-	}
+    public Integer getPage() {
+        return page;
+    }
 
-	public String getSortBy() {
-		return sortBy;
-	}
+    public void setPage(Integer page) {
+        this.page = page;
+    }
 
-	public void setSortBy(String sortBy) {
-		this.sortBy = sortBy;
-	}
+    public Integer getLimit() {
+        return limit;
+    }
 
-	public String getSortName() {
-		return sortName;
-	}
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
 
-	public void setSortName(String sortName) {
-		this.sortName = sortName;
-	}
+    public String getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public String getSortName() {
+        return sortName;
+    }
+
+    public void setSortName(String sortName) {
+        this.sortName = sortName;
+    }
+
+    public boolean checkNull(){
+        if(this.limit != null || this.page != null || this.sortBy != null || this.sortName != null){
+            return false;
+        }
+        return true;
+    }
 }

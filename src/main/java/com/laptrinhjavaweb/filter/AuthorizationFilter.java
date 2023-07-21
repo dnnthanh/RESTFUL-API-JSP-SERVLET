@@ -15,7 +15,7 @@ public class AuthorizationFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        this.context = filterConfig.getServletContext();
+        this.setContext(filterConfig.getServletContext());
     }
 
     @Override
@@ -24,19 +24,19 @@ public class AuthorizationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURI();
-        if(url.startsWith("/news/admin")){
+        if (url.startsWith("/news/admin")) {
             String role = (String) SessionUtil.getInstance().getValue(request, "ROLE");
             UserModel model = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-            if(model != null){
-                if(role.equals(SystemConstant.USER)){
+            if (model != null) {
+                if (role.equals(SystemConstant.USER)) {
                     response.sendRedirect(request.getContextPath() + "/login?is_from_login=true&message=not_permission&alert=danger");
-                }else if(role.equals(SystemConstant.ADMIN)){
+                } else if (role.equals(SystemConstant.ADMIN)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
-            }else{
+            } else {
                 response.sendRedirect(request.getContextPath() + "/login?is_from_login=true&message=not_login&alert=danger");
             }
-        }else{
+        } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
@@ -45,4 +45,12 @@ public class AuthorizationFilter implements Filter {
     public void destroy() {
 
     }
+
+	public ServletContext getContext() {
+		return context;
+	}
+
+	public void setContext(ServletContext context) {
+		this.context = context;
+	}
 }

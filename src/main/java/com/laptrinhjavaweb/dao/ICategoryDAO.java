@@ -6,7 +6,7 @@ import com.laptrinhjavaweb.model.CategoryModel;
 
 public interface ICategoryDAO {
 
-	List<CategoryModel> findAll();
+    List<CategoryModel> findAll();
 
-	CategoryModel findById(Long id);
+    CategoryModel findById(Long id);
 }
